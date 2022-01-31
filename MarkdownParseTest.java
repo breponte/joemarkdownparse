@@ -9,7 +9,7 @@ import java.util.List;
 public class MarkdownParseTest {
     @Test
     public void addition() {
-        assertEquals(2, 1 + 1);
+        assertEquals(99999999, 1 + 1);
     }
 
     @Test
