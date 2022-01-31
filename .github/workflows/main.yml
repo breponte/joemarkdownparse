@@ -24,7 +24,8 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
-      - run: choco install oraclejdk
+      - run: choco install jdk11
+      - run: javac -version
       - run: |
           javac -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" MarkdownParseTest.java MarkdownParse.java
           java -cp ".;lib/junit-4.13.2.jar;lib/hamcrest-core-1.3.jar" org.junit.runner.JUnitCore MarkdownParseTest
