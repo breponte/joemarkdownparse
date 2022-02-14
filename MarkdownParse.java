@@ -1,4 +1,8 @@
 // File reading code from https://howtodoinjava.com/java/io/java-read-file-to-string-examples/
+import org.commonmark.node.*;
+import org.commonmark.parser.Parser;
+import org.commonmark.renderer.html.HtmlRenderer;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,5 +29,23 @@ public class MarkdownParse {
 	    String contents = Files.readString(fileName);
         ArrayList<String> links = getLinks(contents);
         System.out.println(links);
+
+        /*
+        Parser parser = Parser.builder().build();
+        Node document = parser.parse(contents);
+        document.accept(new WordCountVisitor());
+        HtmlRenderer renderer = HtmlRenderer.builder().build();
+        System.out.println(renderer.render(document));
+        */
     }
 }
+/*
+class WordCountVisitor extends AbstractVisitor {
+    int wordCount = 0;
+
+    @Override
+    public void visit(Link text) {
+        System.out.println(text.getDestination());
+    }
+}
+*/
