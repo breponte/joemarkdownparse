@@ -43,6 +43,12 @@ public class MarkdownParseTest {
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
     @Test
+    public void testSpaceAfterParen() {
+        String contents = "[title]( space-in-url.com)";
+        List<String> expect = List.of("space-in-url.com");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+    @Test
     public void testSpaceBeforeParen() {
         String contents = "[title]   (should-not-count.com)";
         List<String> expect = List.of();
