@@ -25,7 +25,7 @@ public class MarkdownParse {
             int closeParen = markdown.indexOf(")", nextCloseBracket);
             toReturn.add(markdown.substring(nextCloseBracket + 2, closeParen));
             currentIndex = closeParen + 1;
-            System.out.format("%d\t%d\t%d\t%d\n", currentIndex, nextOpenBracket, nextCloseBracket, closeParen);
+            // System.out.format("%d\t%d\t%d\t%d\n", currentIndex, nextOpenBracket, nextCloseBracket, closeParen);
         }
         return toReturn;
     }
