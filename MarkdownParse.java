@@ -20,11 +20,24 @@ public class MarkdownParse {
                      openParen == -1 || closeParen == -1) {
                 break;
             }
+
+            // Check if there is an open bracket in between nextOpenBracket and
+            // nextCloseBracket. If so, continue.
+
+            // Loop up until nextCloseBracket looking for open brackets
+
             if(nextOpenBracket != 0 && markdown.charAt(nextOpenBracket - 1) == '!') {
                 currentIndex = currentIndex + 1;
                 continue;
             }
-            String link = markdown.substring(openParen + 1, closeParen);
+            // Can't be out of bounds, because check of -1 for all indices
+            // enforces that nextCloseBracket can't be the last character in file
+            if(markdown.charAt(nextCloseBracket + 1) != '(') {
+                currentIndex = nextCloseBracket + 1;
+                continue;
+            }
+
+            String link = markdown.substring(openParen + 1, closeParen).trim();
             if(link.indexOf(" ") == -1) {
                 toReturn.add(link);
             }

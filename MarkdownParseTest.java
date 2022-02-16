@@ -54,5 +54,11 @@ public class MarkdownParseTest {
         List<String> expect = List.of();
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
+    @Test
+    public void testExtraBracketImage() {
+        String contents = "[![title](should-not-count.com)";
+        List<String> expect = List.of();
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
     
 }
