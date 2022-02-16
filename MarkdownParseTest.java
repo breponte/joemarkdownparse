@@ -40,4 +40,11 @@ public class MarkdownParseTest {
         List<String> expect = List.of();
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
+
+    @Test
+    public void testSpacePlusImage() throws IOException {
+        String contents = Files.readString(Path.of("space-in-link-and-image-in-link.md"));
+        List<String> expect = List.of("a-link.html");
+        assertEquals(MarkdownParse.getLinks(contents), expect);
+    }
 }
