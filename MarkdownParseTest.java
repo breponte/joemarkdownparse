@@ -28,4 +28,11 @@ public class MarkdownParseTest {
         assertEquals(MarkdownParse.getLinks(contents), expect);
     }
 
+    @Test
+    public void testSpaceAroundLink() {
+        String contents= "[link title](   a.com   )";
+        List<String> expect = List.of("a.com");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+
 }
