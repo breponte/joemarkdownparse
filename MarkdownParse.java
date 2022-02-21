@@ -10,7 +10,7 @@ public class MarkdownParse {
     static int findCloseParen(String markdown, int openParen) {
         int closeParen = openParen + 1;
         int openParenCount = 1;
-        while (openParenCount > 0) {
+        while (openParenCount > 0 && closeParen < markdown.length()) {
             if (markdown.charAt(closeParen) == '(') {
                 openParenCount++;
             } else if (markdown.charAt(closeParen) == ')') {
@@ -18,8 +18,8 @@ public class MarkdownParse {
             }
             closeParen++;
         }
-        return closeParen;
-
+        if(openParenCount == 0) { return closeParen - 1; }
+        else { return -1; }
     }
     public static ArrayList<String> getLinks(String markdown) {
         ArrayList<String> toReturn = new ArrayList<>();

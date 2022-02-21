@@ -35,4 +35,11 @@ public class MarkdownParseTest {
         assertEquals(expect, MarkdownParse.getLinks(contents));
     }
 
+    @Test
+    public void testNestedParens() throws IOException {
+        String contents = Files.readString(Path.of("test-parens-inside-link.md"));
+        List<String> expect = List.of("something.com()", "something.com((()))", "something.com", "boring.com");
+        assertEquals(expect, MarkdownParse.getLinks(contents));
+    }
+
 }
