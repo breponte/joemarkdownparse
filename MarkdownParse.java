@@ -18,7 +18,7 @@ public class MarkdownParse {
             }
             closeParen++;
         }
-        return closeParen;
+        return closeParen - 1;
 
     }
     public static ArrayList<String> getLinks(String markdown) {
